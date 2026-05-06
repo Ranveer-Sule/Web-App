@@ -101,12 +101,12 @@ h2 {
 }
 
 #movie-card-1, #movie-card-2, #movie-card-3, #movie-card-4 {
-  width: 100px;
+  width: 200px;
 }
 
 #poster-1, #poster-2, #poster-3, #poster-4 {
-  width: 100px;
-  height: 148px;
+  width: 200px;
+  height: 330px;
   border-radius: 8px;
   margin-bottom: 6px;
 }
