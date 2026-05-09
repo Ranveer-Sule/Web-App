@@ -10,7 +10,7 @@ async function loadfeaturedMovies() {
   movies.forEach(movie => {
     const posterUrl = posterBaseUrl + movie.poster_path;
     const movieCard = document.createElement('div');
-    movieCard.classList.add('movie-card');
+    movieCard.classList.add('movie-search-card');
     movieCard.innerHTML = `
       <img id='poster' src="${posterUrl}" alt="${movie.title} Poster">
       <h3>${movie.title}</h3>
