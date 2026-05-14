@@ -50,6 +50,19 @@ authForm.addEventListener('submit', (event) => {
         currentMode === 'signup'
             ? `Signed up as ${username}.`
             : `Logged in as ${username}.`;
+    
+    // Send data to server
+    fetch('/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password, buttonPressed: currentMode })
+    })
+    .then(res => res.json())
+    .then(data => {
+        authMessage.textContent = data.message;
+    })
+    .catch(err => console.error(err));
+    
     passwordInput.value = '';
 });
 

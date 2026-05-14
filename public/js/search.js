@@ -24,9 +24,6 @@ function addCard(parent, item, className) {
     <h3>${title}</h3>
     <p>Rating: ${(item.vote_average / 2).toFixed(1)} &#9733;</p>
   `;
-  card.addEventListener('click', () => {
-    window.location.href = `/public/pages/selected_item.html?id=${item.id}&type=${type}`;
-  });
   parent.appendChild(card);
 }
 

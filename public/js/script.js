@@ -61,9 +61,6 @@ async function loadfeaturedMovies() {
           <p id='rating'>Rating: ${(movie.vote_average / 2).toFixed(1)} &#9733;</p>
         </div>
       `;
-      movieCard.addEventListener('click', () => {
-        window.location.href = `/public/pages/selected_item.html?id=${movie.id}&type=${type}`;
-      });
       browseRow.appendChild(movieCard);
     });
   } catch (error) {
@@ -76,7 +73,7 @@ if (search) {
     if (event.key === 'Enter') {
       const query = search.value.trim();
       if (query) {
-        window.location.href = `/public/pages/search.html?q=${encodeURIComponent(query)}`;
+        window.location.href = `/pages/search.html?q=${encodeURIComponent(query)}`;
       }
     }
   });
