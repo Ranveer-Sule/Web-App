@@ -1,4 +1,5 @@
 :root {
+  /* ── Primary Colors ── */
   --bg: #171a21;
   --panel: #232833;
   --panel-2: #2b3240;
@@ -7,6 +8,15 @@
   --muted: #b6c0cc;
   --blue: #8fd3ff;
   --blue-dark: #07121d;
+  
+  /* ── Variants ── */
+  --poster-bg-1: #232a35;
+  --poster-bg-2: #202733;
+  --poster-bg-3: #252e3a;
+  --poster-bg-4: #1f2631;
+  --poster-bg-5: #222936;
+  --poster-bg-6: #202735;
+  --poster-bg-7: #242d39;
 }
 
 * {
@@ -17,25 +27,25 @@
 
 body {
   font-family: sans-serif;
-  background: #171a21;
-  color: #f5f7fa;
+  background: var(--bg);
+  color: var(--text);
   padding-bottom: 60px;
 }
 
 header,
 nav {
-  background: #232833;
-  border-color: #3d4654;
+  background: var(--panel);
+  border-color: var(--border);
 }
 
 header {
   padding: 16px 20px;
-  border-bottom: 1px solid #3d4654;
+  border-bottom: 1px solid var(--border);
 }
 
 header h1 {
   font-size: 22px;
-  color: #8fd3ff;
+  color: var(--blue);
 }
 
 main {
@@ -58,16 +68,16 @@ a {
   width: 100%;
   padding: 10px 14px;
   border-radius: 8px;
-  border: 1px solid #3d4654;
-  background: #2b3240;
-  color: #f5f7fa;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text);
   font-size: 15px;
 }
 
 #search:focus,
 .auth-input:focus {
   outline: none;
-  border-color: #8fd3ff;
+  border-color: var(--blue);
   box-shadow: 0 0 0 3px rgba(143, 211, 255, 0.18);
 }
 
@@ -82,8 +92,8 @@ a {
   height: 420px;
   border-radius: 14px;
   overflow: hidden;
-  background: #232833;
-  border: 1px solid #3d4654;
+  background: var(--panel);
+  border: 1px solid var(--border);
 }
 
 .featured-bg-img {
@@ -118,17 +128,17 @@ a {
 #featured-meta,
 .meta {
   font-size: 13px;
-  color: #b6c0cc;
+  color: var(--muted);
   margin-bottom: 8px;
 }
 
 #stars {
-  color: #8fd3ff;
+  color: var(--blue);
   margin-bottom: 12px;
 }
 
 #stars span {
-  color: #b6c0cc;
+  color: var(--muted);
   font-size: 13px;
 }
 
@@ -136,8 +146,8 @@ a {
 #signup-btn,
 #login-btn,
 #auth-submit {
-  background: #8fd3ff;
-  color: #07121d;
+  background: var(--blue);
+  color: var(--blue-dark);
   border: none;
   padding: 10px 20px;
   border-radius: 8px;
@@ -155,16 +165,15 @@ a {
 button:focus-visible,
 input:focus-visible,
 a:focus-visible {
-  outline: 2px solid #8fd3ff;
+  outline: 2px solid var(--blue);
   outline-offset: 2px;
 }
 
 #movie-row,
 #browse-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
 }
 
 #recently-rated-row {
@@ -182,8 +191,7 @@ a:focus-visible {
 .movie-card,
 .movie-search-card,
 .result-card {
-  width: 200px;
-  flex: auto;
+  width: auto;
 }
 
 #poster-1,
@@ -192,12 +200,12 @@ a:focus-visible {
 #poster-4,
 #poster,
 .movie-poster {
-  width: 200px;
-  height: 330px;
+  width: 100%;
+  height: 350px;
   border-radius: 8px;
   margin-bottom: 6px;
   object-fit: cover;
-  background: #2b3240;
+  background: var(--panel-2);
   display: block;
 }
 
@@ -207,7 +215,17 @@ a:focus-visible {
 #movie-card-4 p,
 #browse-row #rating,
 .movie-title {
-  font-size: 12px;
+  font-size: 14px;
+}
+
+.movie-card h3,
+.movie-search-card h3,
+.result-card h3,
+#browse-movie-card h3 {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #browse-list {
@@ -221,8 +239,8 @@ a:focus-visible {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #232833;
-  border: 1px solid #3d4654;
+  background: var(--panel);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 10px;
 }
@@ -235,7 +253,7 @@ a:focus-visible {
   height: 62px;
   border-radius: 6px;
   object-fit: cover;
-  background: #2b3240;
+  background: var(--panel-2);
   flex-shrink: 0;
 }
 
@@ -248,23 +266,22 @@ a:focus-visible {
   margin-bottom: 4px;
 }
 
-#poster-1 { background: #232a35; }
-#poster-2 { background: #202733; }
-#poster-3 { background: #252e3a; }
-#poster-4 { background: #1f2631; }
-#browse-poster-1 { background: #222936; }
-#browse-poster-2 { background: #202735; }
-#browse-poster-3 { background: #242d39; }
+#poster-1 { background: var(--poster-bg-1); }
+#poster-2 { background: var(--poster-bg-2); }
+#poster-3 { background: var(--poster-bg-3); }
+#poster-4 { background: var(--poster-bg-4); }
+#browse-poster-1 { background: var(--poster-bg-5); }
+#browse-poster-2 { background: var(--poster-bg-6); }
+#browse-poster-3 { background: var(--poster-bg-7); }
 
 #search-results {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
 }
 
 #search-results h2 {
-  width: 100%;
+  grid-column: 1 / -1;
   margin: 30px 0 12px;
   font-size: 18px;
 }
@@ -277,24 +294,24 @@ nav {
   display: flex;
   justify-content: space-around;
   padding: 8px 0;
-  border-top: 1px solid #3d4654;
+  border-top: 1px solid var(--border);
 }
 
 nav a {
   text-decoration: none;
-  color: #b6c0cc;
+  color: var(--muted);
   font-size: 13px;
   padding: 8px 12px;
   border-radius: 10px;
 }
 
 nav a:hover {
-  background: #2b3240;
-  color: #8fd3ff;
+  background: var(--panel-2);
+  color: var(--blue);
 }
 
 #nav-active {
-  color: #8fd3ff;
+  color: var(--blue);
   font-weight: 600;
   background: rgba(143,211,255,0.08);
   padding: 8px 12px;
@@ -302,8 +319,7 @@ nav a:hover {
 }
 
 #browse-movie-card {
-  overflow-x: auto;
-  overflow-y: hidden;
+  width: auto;
 }
 
 #Profile {
@@ -313,8 +329,8 @@ nav a:hover {
 #profile-actions {
   text-align: center;
   padding: 20px;
-  background: #232833;
-  border: 1px solid #3d4654;
+  background: var(--panel);
+  border: 1px solid var(--border);
   margin: 20px auto;
   width: 400px;
   border-radius: 10px;
@@ -334,14 +350,14 @@ nav a:hover {
   margin-top: 12px;
   min-height: 20px;
   font-size: 14px;
-  color: #b6c0cc;
+  color: var(--muted);
 }
 
 .featured-movie-card {
   width: 200px;
-  background: #232833;
+  background: var(--panel);
   border-radius: 10px;
-  border: 1px solid #3d4654;
+  border: 1px solid var(--border);
   flex: auto;
 }
 
@@ -350,4 +366,5 @@ nav a:hover {
   gap: 12px;
   padding: 14px;
 }
+
 

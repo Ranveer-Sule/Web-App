@@ -1,5 +1,6 @@
 const apikey = 'd3baaac06925eabab0eb1a72d6d00742';
 const posterBaseUrl = 'https://image.tmdb.org/t/p/w500';
+const search = document.getElementById('search');
 const genreMap = {
   28: 'Action', 12: 'Adventure', 16: 'Animation', 35: 'Comedy', 80: 'Crime',
   99: 'Documentary', 18: 'Drama', 10751: 'Family', 14: 'Fantasy', 36: 'History',
@@ -48,9 +49,11 @@ async function loadfeaturedMovies() {
 
     const browseMovies = movies.slice(1, 40);
     browseMovies.forEach((movie) => {
+      const type = movie.title ? 'movie' : 'tv';
+      const title = movie.title || movie.name;
       const movieCard = document.createElement('div');
       movieCard.className = 'movie-card';
-      const title = movie.title || movie.name;
+      movieCard.style.cursor = 'pointer';
       movieCard.innerHTML = `
         <div id='browse-movie-card'>
           <img id='poster' src="${posterBaseUrl + movie.poster_path}" alt="${title} Poster">
@@ -58,11 +61,25 @@ async function loadfeaturedMovies() {
           <p id='rating'>Rating: ${(movie.vote_average / 2).toFixed(1)} &#9733;</p>
         </div>
       `;
+      movieCard.addEventListener('click', () => {
+        window.location.href = `/public/pages/selected_item.html?id=${movie.id}&type=${type}`;
+      });
       browseRow.appendChild(movieCard);
     });
   } catch (error) {
     console.error(error);
   }
+}
+
+if (search) {
+  search.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      const query = search.value.trim();
+      if (query) {
+        window.location.href = `/public/pages/search.html?q=${encodeURIComponent(query)}`;
+      }
+    }
+  });
 }
 
 loadfeaturedMovies();

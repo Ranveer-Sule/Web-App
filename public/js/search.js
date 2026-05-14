@@ -15,13 +15,18 @@ function addCard(parent, item, className) {
   }
 
   const title = item.title || item.name;
+  const type = item.media_type || (item.title ? 'movie' : 'tv');
   const card = document.createElement('div');
   card.className = className;
+  card.style.cursor = 'pointer';
   card.innerHTML = `
     <img id='poster' src="${posterBaseUrl + item.poster_path}" alt="${title} Poster">
     <h3>${title}</h3>
     <p>Rating: ${(item.vote_average / 2).toFixed(1)} &#9733;</p>
   `;
+  card.addEventListener('click', () => {
+    window.location.href = `/public/pages/selected_item.html?id=${item.id}&type=${type}`;
+  });
   parent.appendChild(card);
 }
 
@@ -84,5 +89,11 @@ if (searchInput) {
   });
 }
 
-loadFeaturedPage();
+const params = new URLSearchParams(window.location.search);
+const prefilledQuery = params.get('q');
+if (prefilledQuery && searchInput) {
+  searchInput.value = prefilledQuery;
+  searchNow();
+}
 
+loadFeaturedPage();
