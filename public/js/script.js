@@ -14,7 +14,7 @@ function getGenreText(genreIds = []) {
   return names.length ? names.join(', ') : 'Unknown Genre';
 }
 
-async function loadfeaturedMovies() {
+async function loadFeaturedMovies() {
   const featuredCard = document.getElementById('featured-card');
   const browseRow = document.getElementById('browse-row');
   if (!featuredCard || !browseRow) {
@@ -35,8 +35,9 @@ async function loadfeaturedMovies() {
     const featured = movies[0];
     const featuredTitle = featured.title || featured.name;
     const featuredYear = (featured.release_date || featured.first_air_date || '').slice(0, 4);
+    const featuredType = featured.title ? 'movie' : 'tv';
     featuredCard.innerHTML = `
-      <div class="featured-movie-card">
+      <div class="featured-movie-card clickable-card">
         <img class="featured-bg-img" src="${backdropBaseUrl + featured.backdrop_path}" alt="${featuredTitle} Backdrop">
         <div class="featured-overlay"></div>
         <div id="featured-info">
@@ -47,13 +48,16 @@ async function loadfeaturedMovies() {
         </div>
       </div>
     `;
+    featuredCard.querySelector('.featured-movie-card').addEventListener('click', () => {
+      window.location.href = `/pages/selected_item.html?id=${featured.id}&type=${featuredType}`;
+    });
 
     const browseMovies = movies.slice(1, 40);
     browseMovies.forEach((movie) => {
       const type = movie.title ? 'movie' : 'tv';
       const title = movie.title || movie.name;
       const movieCard = document.createElement('div');
-      movieCard.className = 'movie-card';
+      movieCard.className = 'movie-card clickable-card';
       movieCard.innerHTML = `
         <div id='browse-movie-card'>
           <img id='poster' src="${posterBaseUrl + movie.poster_path}" alt="${title} Poster">
@@ -61,6 +65,9 @@ async function loadfeaturedMovies() {
           <p id='rating'>Rating: ${(movie.vote_average / 2).toFixed(1)} &#9733;</p>
         </div>
       `;
+      movieCard.addEventListener('click', () => {
+        window.location.href = `/pages/selected_item.html?id=${movie.id}&type=${type}`;
+      });
       browseRow.appendChild(movieCard);
     });
   } catch (error) {
@@ -79,4 +86,4 @@ if (search) {
   });
 }
 
-loadfeaturedMovies();
+loadFeaturedMovies();

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d1117">
+  <title>CineRate</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="item-page">
+
+  <div id="bg-image"></div>
+  <div id="bg-overlay"></div>
+
+  <header id="item-header">
+    <a href="javascript:history.back()" id="back-btn"><i class="fa fa-arrow-left"></i></a>
+    <h1>&#9733; CineRate</h1>
+  </header>
+
+  <div id="item-hero">
+    <div id="item-hero-info">
+      <img id="item-poster" src="" alt="">
+      <div id="item-title-block">
+        <h2 id="item-title"></h2>
+        <p id="item-meta" class="meta"></p>
+        <p id="item-tagline"></p>
+      </div>
+    </div>
+  </div>
+
+  <main id="item-main">
+    <p id="item-overview"></p>
+
+    <div id="ratings-row">
+      <div class="rating-box">
+        <p class="rating-label">Critics Rating</p>
+        <p class="rating-value" id="imdb-rating">—</p>
+        <p class="rating-sub">out of 5</p>
+      </div>
+      <div class="rating-box">
+        <p class="rating-label">User Rating</p>
+        <p class="rating-value" id="user-rating">—</p>
+        <p class="rating-sub" id="user-rating-count">No ratings yet</p>
+      </div>
+    </div>
+
+    <div id="rate-section">
+      <h3>Rate This</h3>
+      <div id="star-widget"></div>
+      <button id="submit-rating">Submit Rating</button>
+      <p id="rate-message"></p>
+    </div>
+  </main>
+
+  <nav>
+    <a href="/"><i class="fa fa-home"></i> Home</a>
+    <a href="/pages/search.html"><i class="fa fa-search"></i> Search</a>
+    <a href="#"><i class="fa fa-star"></i> Ratings</a>
+    <a href="/pages/profile.html"><i class="fa fa-user"></i> Profile</a>
+  </nav>
+
+  <script src="/js/selected_item.js"></script>
+</body>
+</html>
