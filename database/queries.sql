@@ -6,3 +6,5 @@
 --                   user_id INTEGER,
 --                   movie_id INTEGER,
 --                   rating FLOAT);
+
+--DELETE FROM Users;

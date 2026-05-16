@@ -18,7 +18,6 @@ function addCard(parent, item, className) {
   const type = item.media_type || (item.title ? 'movie' : 'tv');
   const card = document.createElement('div');
   card.className = className;
-  card.style.cursor = 'pointer';
   card.innerHTML = `
     <img id='poster' src="${posterBaseUrl + item.poster_path}" alt="${title} Poster">
     <h3>${title}</h3>

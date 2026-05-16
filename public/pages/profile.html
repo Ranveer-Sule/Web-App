@@ -16,12 +16,14 @@
 
   <main>
     <h2 id="Profile">Profile</h2>
-    <h3 id="Profile">Welcome, To CineRate!</h3>
-    <p id = "Profile">Please Sign Up or Log In to access your profile.</p>
 
     <div id="profile-actions">
-      <button id="signup-btn">Sign Up</button>
-      <button id="login-btn">Log In</button>
+      <h3 id="Profile">Welcome to CineRate!</h3>
+      <p id="Profile">Please Sign Up or Log In to access your profile.</p>
+      <div id="auth-toggle">
+        <button id="signup-btn">Sign Up</button>
+        <button id="login-btn">Log In</button>
+      </div>
 
       <form id="auth-form" hidden>
         <input type="text" id="username" class="auth-input" placeholder="Username" autocomplete="username">
@@ -30,6 +32,23 @@
       </form>
 
       <p id="auth-message"></p>
+    </div>
+
+    <div id="profile-dashboard" hidden>
+      <div id="profile-avatar"></div>
+      <h3 id="profile-username"></h3>
+      <p id="profile-subtitle">CineRate Member</p>
+      <button id="logout-btn">Log Out</button>
+
+      <div id="edit-profile-section">
+        <h4>Edit Profile</h4>
+        <form id="edit-form">
+          <input type="text" id="new-username" class="auth-input" placeholder="New Username" autocomplete="username">
+          <input type="password" id="new-password" class="auth-input" placeholder="New Password (optional)" autocomplete="new-password">
+          <button type="submit" id="edit-submit">Save Changes</button>
+        </form>
+        <p id="edit-message"></p>
+      </div>
     </div>
   </main>
 

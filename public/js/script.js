@@ -1,5 +1,6 @@
 const apikey = 'd3baaac06925eabab0eb1a72d6d00742';
 const posterBaseUrl = 'https://image.tmdb.org/t/p/w500';
+const backdropBaseUrl = 'https://image.tmdb.org/t/p/w1280';
 const search = document.getElementById('search');
 const genreMap = {
   28: 'Action', 12: 'Adventure', 16: 'Animation', 35: 'Comedy', 80: 'Crime',
@@ -26,7 +27,7 @@ async function loadfeaturedMovies() {
     const movieData = await movieRes.json();
     const tvData = await tvRes.json();
     const combined = [...(movieData.results || []), ...(tvData.results || [])];
-    const movies = combined.filter((item) => item.poster_path);
+    const movies = combined.filter((item) => item.poster_path && item.backdrop_path);
   if (!movies.length) {
     return;
   }
@@ -36,7 +37,7 @@ async function loadfeaturedMovies() {
     const featuredYear = (featured.release_date || featured.first_air_date || '').slice(0, 4);
     featuredCard.innerHTML = `
       <div class="featured-movie-card">
-        <img class="featured-bg-img" src="${posterBaseUrl + featured.poster_path}" alt="${featuredTitle} Poster">
+        <img class="featured-bg-img" src="${backdropBaseUrl + featured.backdrop_path}" alt="${featuredTitle} Backdrop">
         <div class="featured-overlay"></div>
         <div id="featured-info">
           <h3>${featuredTitle}</h3>
@@ -53,7 +54,6 @@ async function loadfeaturedMovies() {
       const title = movie.title || movie.name;
       const movieCard = document.createElement('div');
       movieCard.className = 'movie-card';
-      movieCard.style.cursor = 'pointer';
       movieCard.innerHTML = `
         <div id='browse-movie-card'>
           <img id='poster' src="${posterBaseUrl + movie.poster_path}" alt="${title} Poster">
